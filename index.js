@@ -88,7 +88,10 @@ client.on('ready', () => {
         if (message.content.startsWith(prefix)) {
             const command = message.content.substr(1);
             const args = command.split(/\s+/g);
-            commands[args[0]](member, message.channel, args);
+
+            if (commands[args[0]]) {
+                commands[args[0]](member, message.channel, args);
+            }
         }
     });
 });
